@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AeropuertosTabla">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Animales">
+            <items>
+              <MenuItem fx:id="mnItAniadirAnimal" mnemonicParsing="false" onAction="#aniadirAnimal" text="Alta" />
+                  <MenuItem fx:id="mnItEditarAnimal" mnemonicParsing="false" onAction="#editarAnimal" text="Modificar" />
+                  <MenuItem fx:id="mnItBorrarAnimal" mnemonicParsing="false" onAction="#borrarAnimal" text="Borrar" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <VBox prefHeight="225.0" prefWidth="1021.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="1021.0">
+               <children>
+                  <Label text="Gestor Animales">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="116.0" prefWidth="1021.0">
+               <children>
+                  <ImageView fx:id="imgAnimal" fitHeight="109.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="149.0" prefWidth="960.0">
+                     <children>
+                        <Label text="Nombre:" />
+                        <TextField fx:id="txtVNombre" onAction="#filtrarNombre">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="tbViewAnimales" prefHeight="395.0" prefWidth="756.0">
+        <columns>
+          <TableColumn fx:id="tbColId" prefWidth="38.0" text="ID" />
+          <TableColumn fx:id="tbColNombre" prefWidth="106.0" text="Nombre" />
+            <TableColumn fx:id="tbColEspecie" prefWidth="135.0" text="Especie" />
+            <TableColumn fx:id="tbColRaza" prefWidth="125.0" text="Raza" />
+            <TableColumn fx:id="tbColSexo" text="Sexo" />
+            <TableColumn fx:id="tbColPeso" prefWidth="63.0" text="Peso" />
+            <TableColumn fx:id="tbColEdad" prefWidth="57.0" text="Edad" />
+            <TableColumn fx:id="tbColObservaciones" prefWidth="201.0" text="Observaciones" />
+            <TableColumn fx:id="tbColFecha" prefWidth="175.0" text="Fecha de Consulta" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>
