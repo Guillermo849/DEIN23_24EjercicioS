@@ -19,11 +19,12 @@ public class GestorBDDAnimales {
 		ObservableList<Animal> Animals = FXCollections.observableArrayList();
 		try {
 			conexion = new ConexionBDD();
-			String consulta = "select * from Animal";
+			String consulta = "select * from animales";
 			PreparedStatement pstmt = conexion.getConexion().prepareStatement(consulta);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				int id = rs.getInt("id");
 				String nombre = rs.getString("nombre");
 				String especie = rs.getString("especie");
 				String raza = rs.getString("raza");
@@ -31,9 +32,9 @@ public class GestorBDDAnimales {
 				int edad = rs.getInt("edad");
 				long peso = rs.getLong("peso");
 				String observaciones = rs.getString("observaciones");
-				Date fecha = rs.getDate("fecha_consulta");
+				String fecha = rs.getString("fecha");
 				String foto = rs.getString("foto");
-				Animal p = new Animal(nombre, especie, raza, sexo, edad, peso, observaciones, fecha, foto);
+				Animal p = new Animal(id, nombre, especie, raza, sexo, edad, peso, observaciones, fecha, foto);
 				Animals.add(p);
 			}
 			rs.close();
@@ -55,7 +56,7 @@ public class GestorBDDAnimales {
 		int edad = Animal.getEdad();
 		long peso = Animal.getPeso();
 		String observaciones = Animal.getObservaciones();
-		Date fecha = Animal.getFecha();
+		String fecha = Animal.getFecha();
 		String foto = Animal.getFoto();
 
 		conexion = new ConexionBDD();
@@ -70,7 +71,7 @@ public class GestorBDDAnimales {
 			pstmt.setInt(5, edad);
 			pstmt.setLong(6, peso);
 			pstmt.setString(7, observaciones);
-			pstmt.setDate(8, fecha);
+			pstmt.setString(8, fecha);
 			pstmt.setString(9, foto);
 
 			// Execute the query
@@ -92,12 +93,12 @@ public class GestorBDDAnimales {
 		int edad = Animal.getEdad();
 		long peso = Animal.getPeso();
 		String observaciones = Animal.getObservaciones();
-		Date fecha = Animal.getFecha();
+		String fecha = Animal.getFecha();
 		String foto = Animal.getFoto();
 
 		try {
 			conexion = new ConexionBDD();
-			String consulta = "UPDATE your_table_name SET nombre=?, especie=?, raza=?, sexo=?, edad=?, peso=?, observaciones=?, fecha=?, foto=? WHERE id=?";
+			String consulta = "UPDATE animales SET nombre=?, especie=?, raza=?, sexo=?, edad=?, peso=?, observaciones=?, fecha=?, foto=? WHERE id=?";
 			PreparedStatement pstmt = conexion.getConexion().prepareStatement(consulta);
 			pstmt.setString(1, nombre);
 			pstmt.setString(2, especie);
@@ -106,11 +107,11 @@ public class GestorBDDAnimales {
 			pstmt.setInt(5, edad);
 			pstmt.setLong(6, peso);
 			pstmt.setString(7, observaciones);
-			pstmt.setDate(8, fecha);
+			pstmt.setString(8, fecha);
 			pstmt.setString(9, foto);
 			pstmt.setInt(10, id);
 			pstmt.executeUpdate();
-
+			System.out.println("Data modified successfully");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,7 +125,7 @@ public class GestorBDDAnimales {
 
 		try {
 			conexion = new ConexionBDD();
-			String consulta = "DELETE FROM Animal WHERE id = " + idAnimal + ";";
+			String consulta = "DELETE FROM animales WHERE id = " + idAnimal + ";";
 			PreparedStatement pstmt = conexion.getConexion().prepareStatement(consulta);
 			pstmt.executeUpdate();
 
