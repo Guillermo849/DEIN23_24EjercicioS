@@ -11,7 +11,7 @@ public class ConexionBDD {
     private Connection conexion;
     public ConexionBDD()  {
     	try {
-    		String baseDatos = "personas";
+    		String baseDatos = "animales";
             String host = "localhost";
             String usuario = "user3";
             String password = "user3";

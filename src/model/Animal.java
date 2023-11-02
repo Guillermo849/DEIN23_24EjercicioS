@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Date;
-
 public class Animal {
 	private int ID;
 	private String nombre;
@@ -11,11 +9,11 @@ public class Animal {
 	private int edad;
 	private long peso;
 	private String observaciones;
-	private Date fecha;
+	private String fecha;
 	private String foto;
 	
 	public Animal(int iD, String nombre, String especie, String raza, String sexo, int edad, long peso,
-			String observaciones, Date fecha, String foto) {
+			String observaciones, String fecha, String foto) {
 		ID = iD;
 		this.nombre = nombre;
 		this.especie = especie;
@@ -29,7 +27,7 @@ public class Animal {
 	}
 	
 	public Animal(String nombre, String especie, String raza, String sexo, int edad, long peso, String observaciones,
-			Date fecha, String foto) {
+			String fecha, String foto) {
 		this.nombre = nombre;
 		this.especie = especie;
 		this.raza = raza;
@@ -105,11 +103,11 @@ public class Animal {
 		this.observaciones = observaciones;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
