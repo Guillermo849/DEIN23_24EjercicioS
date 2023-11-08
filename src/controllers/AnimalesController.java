@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
@@ -18,6 +19,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -84,6 +86,7 @@ public class AnimalesController implements Initializable{
     void selectAnimal(MouseEvent event) {
 		if (tbViewAnimales.getSelectionModel().getSelectedItem() != null) {
 			animalIndex = tbViewAnimales.getSelectionModel().getSelectedIndex();
+			imgAnimal.setImage(new Image(Paths.get(".").toAbsolutePath().normalize().toString() + "/resources/img/" + tbViewAnimales.getItems().get(animalIndex).getFoto()));
 		}
 	}
     

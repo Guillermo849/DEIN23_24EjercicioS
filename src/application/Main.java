@@ -13,7 +13,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			VBox root = FXMLLoader.load(getClass().getResource("/fxml/tablaAnimales.fxml"));
-			Scene scene = new Scene(root,1000,700);
+			Scene scene = new Scene(root,900,700);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("GESTOR DE ANIMALES - TABLA");
 			primaryStage.show();
